@@ -1,0 +1,65 @@
+<div id="container">
+
+  
+    <mat-form-field >
+      <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Search">
+     </mat-form-field>
+  
+   <mat-table [dataSource]="ordersSource" matSort class="tabela">
+      <ng-container matColumnDef="departure_date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Departure date</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.date | date }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="arrival_date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Arrival date</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.date | date  }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="from">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>From</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.from }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="to">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>To</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.to }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="departure_time">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Departure time</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.departure_time }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="arrival_time">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Arrival time</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.arrival_time }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="class">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Class</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.class }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="flight_company">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Company</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.flight_company }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="person">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ticket number</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.person }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Price per person</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.price }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Total price</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.total }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.status }}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let rows; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    
+     <mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 5, 7, 15]"></mat-paginator>
+    
+  
+    </div>
+  

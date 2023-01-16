@@ -1,0 +1,69 @@
+<div id="border">
+    <mat-form-field >
+      <mat-select placeholder="Choose class" [(value)]="selected" (selectionChange)="selectCategory()">
+        <mat-option value="Economy class">Economy class</mat-option>
+        <mat-option value="Business class">Business class</mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+    <mat-form-field >
+      <mat-select placeholder="Choose by price" [(value)]="selected" (selectionChange)="selectPriceless()">
+        
+        <mat-option value="Good">Less than 100€</mat-option>
+        <mat-option value="Normal">More than 100€ </mat-option>
+        <mat-option value="Luxury">Luxury trip</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <app-search  (searchTextChange)="onSearchTextEntered($event)" placeholder="Destination"></app-search>
+   
+
+    <div id="container">
+    
+    <div class="cont" *ngFor="let travel of pageSlice">
+    <div class="example-card" *ngIf="searchText === '' || travel.to.toLowerCase().includes(searchText)">
+        <mat-card-title>
+          <p style="font-weight: light;" class="slova">
+            <mat-icon matSuffix>flight_takeoff</mat-icon> {{ travel.from }}  <mat-icon matSuffix>flight_landing</mat-icon> {{ travel.to }}
+          </p>
+        </mat-card-title>
+      <img mat-card-image [src]="travel.image"style="max-height: 120px; max-width: 150px;" alt="fruit">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<img [src]="travel.photo"style="max-height: 120px; max-width: 150px;" alt="slika">
+      <mat-card-content>
+        <p class="opis">
+         {{ travel.description }}
+        </p>
+        <p style="font-weight: bold;" class="opis">
+        {{ travel.name }}
+        </p>
+        <p style="font-weight: bold;">
+          <mat-icon matSuffix>flight_takeoff</mat-icon> {{ travel.departureDate }}<mat-icon>trending_flat</mat-icon> {{ travel.departureTime }}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+          <mat-icon>flight_landing</mat-icon>{{ travel.arrivalDate }}<mat-icon>trending_flat</mat-icon>{{ travel.arrivalTime }}
+          <br>
+          <br>
+          Avaliable seats:
+          <br>
+          <mat-icon>event_seat</mat-icon>&nbsp;&nbsp;{{ travel.seats }}                                                                                    
+        </p>
+      
+      </mat-card-content>
+      <div class="dugme">
+         
+        <button mat-raised-button 
+        color="primary" (click)="addToCart(travel)"  class="btn btn-primary">Book</button> -
+        <button mat-raised-button 
+        color="primary" mat-button [routerLink]="['/travels', travel.id]" class="btn btn-primary">Details</button> -
+        <button mat-raised-button 
+        color="primary" mat-button [routerLink]="['/seats', travel.id]" class="btn btn-primary">Seats</button>
+      </div>
+    </div>
+    
+    </div>
+    
+    </div>
+    <mat-paginator [length]="this.travels.length"
+                   [pageSize]="6"
+                   [pageSizeOptions]="[9, 12, 15, 30]"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+    </div>

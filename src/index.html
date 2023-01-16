@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularFlightApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
+  <style>
+    .rw-conversation-container .rw-header {
+      background-color: hsl(239, 39%, 47%);
+    }
+
+    .rw-conversation-container .rw-messages-container .rw-message .rw-client {
+      background-color: hsl(212, 43%, 43%);
+    }
+
+    .rw-conversation-container .rw-messages-container .rw-message .rw-client .rw-message-text{
+      color: hsla(210, 4%, 9%, 0.801);
+    }
+
+    .rw-launcher {
+      background-color: #287db6;
+    }
+
+    .rw-conversation-container .rw-reply {
+      background-color: #3397be;
+      border: 1px #2450b1 solid;
+    }
+
+  </style>
+    <!-- Link ka botfront-u: https://github.com/botfront/rasa-webchat -->    
+    <script>!(function () {
+        let e = document.createElement("script"),
+          t = document.head || document.getElementsByTagName("head")[0];
+        (e.src =
+          "https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"),
+          // Replace 1.x.x with the version that you want
+          (e.async = !0),
+          (e.onload = () => {
+            window.WebChat.default(
+              {
+                title: 'Travel agent',
+                initPayload: '/greet',
+                customData: { language: "en" },
+                socketUrl: "http://localhost:5005",
+                // add other props here
+                profileAvatar: "../assets/bot6.png",
+                openLauncherImage: "../assets/chat1.png",
+                showFullScreenButton: true,
+                showMessageDate: true,
+                inputTextFieldHint: 'What is in your mind..?'
+              },
+              null
+            );
+          }),
+          t.insertBefore(e, t.firstChild);
+      })();
+      </script>
+</body>
+</html>

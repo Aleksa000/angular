@@ -1,0 +1,30 @@
+form {
+    height: 600px;
+    width: 500px;
+    margin: 30px auto;
+    margin-bottom: 50px;
+    border: 1px solid gray;
+    border-radius: 25px;
+    background-color: white;
+  }
+  
+  mat-form-field {
+    margin: 0px;
+    width: 80%;
+  
+  }
+  
+  a {
+    font-size: 18px;
+  }
+  
+  button{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  mat-checkbox{
+    font-size: 18px;
+    font-weight: 500;
+  }
+  

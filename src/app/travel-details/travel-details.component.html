@@ -1,0 +1,24 @@
+<h2 fxLayout="row" fxLayoutAlign="center center" >Flights details:</h2>
+
+<div *ngIf="travel" fxLayout="row" fxLayoutAlign="center center" >
+  <mat-card fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-header>
+      <div class="example-header-image"></div>
+      <mat-card-title><a [title]="travel.name + ' details'">
+        {{ travel.name }}
+      </a></mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="travel.image" style="height: 300px; width: 300px;" alt="fruit">
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+      <p>
+       {{ travel.description }}
+      </p>
+      <p>Price for person: {{ travel.price }} €</p>
+      <p>Available seats: {{ travel.quantity }}</p>
+      <p>Rating:  {{travel.stars}}</p>
+    </mat-card-content>
+    <div>
+  <button mat-raised-button color="primary" (click)="addToCart(travel)" class="btn btn-primary" routerLink="/travel">Book</button>
+</div>
+  </mat-card>
+</div>

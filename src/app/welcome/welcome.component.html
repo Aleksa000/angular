@@ -1,0 +1,33 @@
+<div fxLayout="column" fxLayoutAlign="center center" id="welcome" fxLayoutGap="50px">
+  
+    <h2>We are website offering best last minute flight deals!</h2>
+    <div id="container" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="50px"> 
+    <div class="cont" *ngFor="let travel of pageTrav"><!--lista-->
+      
+<mat-card class="example-card">
+ <mat-card-title >
+              {{ travel.name }}
+  </mat-card-title>
+  <img mat-card-image [src]="travel.image" style="max-height: 250px; max-width: 300px;" alt="travels">
+  <mat-card-content>
+      <p style="font-weight: bold;">
+            Rating: {{ travel.stars }}
+          </p>
+</mat-card-content>
+ <mat-card-actions>
+           
+</mat-card-actions>
+</mat-card>
+</div>
+</div> 
+<mat-card>
+    <mat-card-title fxLayoutAlign="center"> About us </mat-card-title>
+     <mat-card-content fxLayoutAlign="center center" id="cardText">    
+          The travel agency is at the service of offering passengers arrangements that mainly include accommodation and transportation to the desired destinations, as well as the availability of a tourist guide that is available to travelers during the trip.
+    </mat-card-content>
+</mat-card> 
+<br>
+</div>
+<div class="cloud cloud1">
+    <div class="light"></div>
+  <img  src="https://images.vexels.com/media/users/3/145795/isolated/preview/05cd33059a006bf49006097af4ccba98-plane-in-flight-by-vexels.png" /></div>

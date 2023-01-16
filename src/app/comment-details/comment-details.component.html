@@ -1,0 +1,28 @@
+<h2 fxLayout="row" fxLayoutAlign="center center" >Put your comment please:</h2>
+
+<div *ngIf="travel" fxLayout="row" fxLayoutAlign="center center" >
+  <mat-card fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-header>
+      <div class="example-header-image"></div>
+      <mat-card-title><a [title]="travel.name + ' details'">
+        {{ travel.name }}
+      </a></mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="travel.image" style="height: 300px; width: 300px;" alt="fruit">
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+      <p>
+       {{ travel.description }}
+      </p>
+    </mat-card-content>
+    <div>
+      <textarea [(ngModel)]="comment">
+      </textarea>
+    </div>
+    <div *ngFor="let comments of postComment" >
+      <p>{{comments}}</p>
+    </div>
+    <div>
+    <button mat-raised-button color="primary"  class="btn btn-primary" (click)="post()">Comment</button>
+</div>
+  </mat-card>
+</div>

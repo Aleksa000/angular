@@ -1,0 +1,51 @@
+<div id="border">
+    <div id="container">
+    <div class="cont" *ngFor="let travel of pageSlice">
+    <div class="example-card">
+        <mat-card-title>
+          <p style="font-weight: light;">
+           
+          </p>
+        </mat-card-title>
+      <img mat-card-image [src]="travel.image"style="max-height: 150px; max-width: 250px;" alt="fruit">
+      <mat-card-content>
+        <p style="font-weight: bold;">
+        {{ travel.name }}
+        </p>
+        <p style="font-weight: bold;" >
+          <mat-icon>person</mat-icon>Anonymous
+          <br><mat-icon>comment</mat-icon>{{ travel.comments }}   
+          <p>Like: {{ travel.positive }} 
+          <p>Dislike: {{ travel.negative }}                                                                            
+        </p>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div>
+          <button mat-button (click)="upvote(travel.id)" class="mat-icon-rtl-mirror">
+            <span class="material-icons">
+              thumb_up
+            </span>
+          </button>
+          <button mat-button (click)="downvote(travel.id)" class="mat-icon-rtl-mirror">
+            <span class="material-icons">
+              thumb_down
+            </span>
+          </button>
+        </div>
+      </mat-card-actions>
+      <div class="dugme">
+        <button mat-raised-button 
+        color="primary" mat-button [routerLink]="['/travel', travel.id]" class="btn btn-primary">Leave a comment</button>
+      </div>
+    </div>
+    
+    </div>
+    
+    </div>
+    <mat-paginator [length]="this.travels.length"
+                   [pageSize]="6"
+                   [pageSizeOptions]="[9, 12, 15, 30]"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+    </div>
